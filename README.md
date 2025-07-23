@@ -20,7 +20,7 @@ The **Student Grades Tracker** is an application designed to help instructors ma
    - `average_grade` (float, calculated from grades)  
 
 ### **Data Structure**  
-- A **dynamic array** (or **linked list**) of `Student` structs to store all student records.  
+- A **linked list** of `Student` structs to store all student records.  
 - Enables efficient addition, searching, and sorting.  
 
 ## **3. Main Features & Menu Options**  
@@ -58,3 +58,10 @@ The program will present a **menu-driven interface** with the following options:
 
 ## **5. Expected Outcome**  
 A functional, user-friendly program that simplifies grade tracking for educators while demonstrating core C programming concepts (structs, file I/O, sorting, and dynamic memory).  
+
+6. **Developers**
+Renis Vukaj
+GitHub: renisv
+
+Kevin Voka
+GitHub: kevin10v
