@@ -59,7 +59,7 @@ The program will present a **menu-driven interface** with the following options:
 ## **5. Expected Outcome**  
 A functional, user-friendly program that simplifies grade tracking for educators while demonstrating core C programming concepts (structs, file I/O, sorting, and dynamic memory).  
 
-6. **Developers**
+## **6. Developers**
 Renis Vukaj
 GitHub: renisv
 
