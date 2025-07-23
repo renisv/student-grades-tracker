@@ -60,8 +60,6 @@ The program will present a **menu-driven interface** with the following options:
 A functional, user-friendly program that simplifies grade tracking for educators while demonstrating core C programming concepts (structs, file I/O, sorting, and dynamic memory).  
 
 ## **6. Developers**
-Renis Vukaj
-GitHub: renisv
-
-Kevin Voka
-GitHub: kevin10v
+ 
+- **[Renis Vukaj](https://github.com/renisv)**  
+- **[Kevin Voka](https://github.com/kevin10v)**  
