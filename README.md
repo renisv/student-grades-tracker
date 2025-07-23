@@ -1,4 +1,3 @@
-# PortfolioProject.md
 # Student Grades Tracker - Project Proposal  
 
 ## **1. Application Overview**  
