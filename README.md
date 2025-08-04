@@ -32,7 +32,7 @@ This is a **C program** that helps teachers or administrators keep track of stud
 struct Student {
     char name[50];         // Student name
     int id;                // Student ID 
-    float grades[5];       // Array of 5 grades
+    int grades[5];         // Array of 5 grades
     struct Student* next;  // Link to next student
 };
 ```
