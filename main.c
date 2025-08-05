@@ -23,3 +23,11 @@ int main()
     // 3. Calculate and display average
     float avg = calculate_average(student);
     printf("\nAverage grade: %.1f\n", avg);
+
+    / 4. Save to file
+ save_student_to_file(student);
+ // 5. Clean up
+ free(student);
+ //view_all_students();
+ return 0;
+}
