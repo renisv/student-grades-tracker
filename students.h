@@ -15,5 +15,5 @@ void save_new_students(char* filename, Student* head);
 float calculate_average(const Student* student);
 void print_all_students(Student *head);
 void print_student(Student *head);
-
+void sync_students_with_file(const char *filename, Student *new_students_head);
 #endif

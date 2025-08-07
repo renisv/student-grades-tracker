@@ -124,3 +124,58 @@ void print_student(Student *student)
 		printf("%d ", student->grades[i]);
 	printf("\n\n");
 }
+
+
+void sync_students_with_file(const char *filename, Student *new_students_head)
+{
+    Student *full_list = NULL;
+    Student *file_tail = NULL;
+    FILE *file = fopen(filename, "r");
+    if (file != NULL) {
+        char line[256];
+        while (fgets(line, sizeof(line), file)) {
+            char name[50];
+            int id, grades[5];
+            int parsed = sscanf(line, "%49[^,],%d,%d,%d,%d,%d,%d",
+                              name, &id,
+                              &grades[0], &grades[1], &grades[2],
+                              &grades[3], &grades[4]);
+            if (parsed == 7) {
+                Student *new_node = malloc(sizeof(Student));
+                if (new_node) {
+                    strncpy(new_node->name, name, 49);
+                    new_node->name[49] = '\0';
+                    new_node->id = id;
+                    memcpy(new_node->grades, grades, sizeof(grades));
+                    new_node->next = NULL;
+                    if (!full_list) {
+                        full_list = file_tail = new_node;
+                    } else {
+                        file_tail->next = new_node;
+                        file_tail = new_node;
+                    }
+                }
+            }
+        }
+        fclose(file);
+    }
+    if (file_tail) {
+        file_tail->next = new_students_head;
+    } else {
+        full_list = new_students_head;
+    }
+    file = fopen(filename, "w");
+    if (file != NULL) {
+        Student *curr = full_list;
+        while (curr != NULL) {
+            fprintf(file, "%s,%d,%d,%d,%d,%d,%d\n",
+                   curr->name, curr->id,
+                   curr->grades[0], curr->grades[1], curr->grades[2],
+                   curr->grades[3], curr->grades[4]);
+            curr = curr->next;
+        }
+        fclose(file);
+    } else {
+        perror("Failed to save student file");
+    }
+}
