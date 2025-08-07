@@ -4,30 +4,22 @@
 int main()
 {
     // 1. Create student
-    int grades[5] = {8, 7, 9, 6, 8};
-    Student* student = create_student("Anna Kowalski", 1002, grades);
-  
-    if (student == NULL) {
-        printf("Failed to create student\n");
-        return 1;
-    }
-    // 2. Display student info
-    printf("\n=== STUDENT CREATED ===\n");
-    printf("Name: %s\n", student->name);
-    printf("ID: %d\n", student->id);
-    printf("Grades: ");
-    for (int i = 0; i < 5; i++) {
-        printf("%d ", student->grades[i]);
-    }
-  
-    // 3. Calculate and display average
-    float avg = calculate_average(student);
-    printf("\nAverage grade: %.1f\n", avg);
+    int grades[5] = {8, 7, 9, 10, 8};
 
-    / 4. Save to file
- save_student_to_file(student);
- // 5. Clean up
- free(student);
- //view_all_students();
+	Student *head;
+	head = NULL;
+
+    Student* s1 = create_student(&head, "Emily Blunt", 1003, grades);
+
+	Student* s2 = create_student(&head, "John Krasihnsiki", 1004, grades);
+
+	print_all_students(head);
+
+	save_new_students("students.txt", head);
+
+	load_students_file("students.txt");
+
+	
+
  return 0;
 }
