@@ -1,16 +1,33 @@
 #include "students.h"
 #include <stdio.h>
 #include <stdlib.h>
-int main()
+
+int main() 
 {
-    int grades[5] = {8, 7, 9, 10, 8};
-    Student *head;
-    head = NULL;
-    Student* s1 = create_student(&head, "sahasj", 1003, grades);
-    Student* s2 = create_student(&head, "ewg435gr", 1004, grades);
-    sync_students_with_file("students.txt", head);
-    // print_all_students(head);
-    // save_new_students("students.txt", head);
-    load_students_file("students.txt");
- return 0;
+    Student* head = NULL;
+    
+    
+    if (load_students_from_file("students.txt", &head) != 0) {
+        fprintf(stderr, "Failed to load students from file\n");
+        return 1;
+    }
+    
+	// find_student(head,"Robert Clark");
+
+	// show_student_average(head, "John Smith");
+
+	// show_student_average(head, "Renis Vukaj");
+
+	show_class_average(head);
+
+
+    
+    if (export_students_to_file("students_updated.txt", head) != 0) {
+        fprintf(stderr, "Failed to export students to file\n");
+        return 1;
+    }
+    
+	
+
+    return 0;
 }

@@ -10,10 +10,16 @@ typedef struct Student
 } Student;
 
 Student* create_student(Student **head, const char* name, int id, const int grades[5]);
-void load_students_file(char* filename);
-void save_new_students(char* filename, Student* head);
-float calculate_average(const Student* student);
+void print_student(const Student *student);
 void print_all_students(Student *head);
-void print_student(Student *head);
-void sync_students_with_file(const char *filename, Student *new_students_head);
+
+float calculate_average(const Student* student);
+
+int load_students_from_file(const char* filename, Student** head);
+int export_students_to_file(const char* filename, const Student* head);
+
+Student* find_student(Student *head, const char *name);
+void show_student_average(Student *head, const char *name);
+void show_class_average(Student *head);
+
 #endif
