@@ -16,12 +16,13 @@ int main()
 
 	// show_student_average(head, "John Smith");
 
-	// show_student_average(head, "Renis Vukaj");
+	float avg = calculate_student_average(head, "John Smith");
+	printf("Average grade for the student is %.2f\n", avg);
 
-	show_class_average(head);
+	float clsavg = calculate_class_average(head);
+	printf("Average grade for the class is %.2f\n", clsavg);
 
 
-    
     if (export_students_to_file("students_updated.txt", head) != 0) {
         fprintf(stderr, "Failed to export students to file\n");
         return 1;

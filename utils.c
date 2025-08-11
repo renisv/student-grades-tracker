@@ -20,9 +20,7 @@ Student* find_student(Student *head, const char *name)
     while (current != NULL) {
         if (strcmp(current->name, name) == 0) 
 		{
-			print_student(current);
             return current;
-			
         }
         current = current->next;
     }
@@ -30,58 +28,77 @@ Student* find_student(Student *head, const char *name)
 }
 
 /**
- * show_student_average - Shows student's average grade
+ * calculate_student_average - finds average grade for a student
  * @head: Pointer to student list
- * @name: Name to search for
+ * @name: Name of student to find
+ *
+ * Return: Average grade if found, -1.0 if not found
+ * Description: Uses existing find_student function
  */
-void show_student_average(Student *head, const char *name)
+float calculate_student_average(Student *head, const char *name)
 {
+    
     Student *found = find_student(head, name);
+    
     if (found == NULL) {
-        printf("Student '%s' not found\n", name);
-        return;
+        return -1.0f;  
     }
-  
-    float sum = 0;
+
+    
+    float sum = 0.0f;
     for (int i = 0; i < 5; i++) {
         sum += found->grades[i];
     }
-    float average = sum / 5.0f;
     
-    printf("Average Grade: %.2f\n", average);
-    
+    return sum / 5.0f;
 }
 
+/**
+ * get_student_count - Counts the number of students in the list
+ * @head: Pointer to the head of the student list
+ *
+ * Return: Number of students (0 if list is empty)
+ */
+int get_student_count(Student *head)
+{
+    int count = 0;
+    Student *current = head;
+    
+    while (current != NULL) {
+        count++;
+        current = current->next;
+    }
+    
+    return count;
+}
 
 /**
- * show_class_average - Calculates and displays class average
+ * calculate_class_average - Calculates average grade for entire class
  * @head: Pointer to student list
  *
- * Description: Handles all calculations and output internally
- *              No return value needed
+ * Return: Class average, or -1.0 if no students
+ * Description: Uses get_student_count() for student count
  */
-void show_class_average(Student *head)
+float calculate_class_average(Student *head)
 {
-    if (head == NULL) {
-        printf("No students in class\n");
-        return;
+    int student_count = get_student_count(head);
+    if (student_count == 0) {
+        return -1.0f;  
     }
 
     Student *current = head;
     float total_sum = 0.0f;
-    int student_count = 0;
 
     while (current != NULL) {
-        float student_sum = 0.0f;
-        for (int i = 0; i < 5; i++) {
-            student_sum += current->grades[i];
+        float student_avg = calculate_student_average(head, current->name);
+        if (student_avg >= 0.0f) {  
+            total_sum += student_avg;
         }
-        total_sum += student_sum / 5.0f;
-        student_count++;
         current = current->next;
     }
 
-    float class_avg = total_sum / student_count;
-    printf("Class average for %d students: %.2f\n", student_count, class_avg);
-
+    return total_sum / student_count;
 }
+
+
+
