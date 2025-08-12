@@ -26,6 +26,6 @@ float calculate_class_average(Student *head);
 int* get_grade_distribution(Student *head);
 void show_class_statistics(Student *head);
 void bubble_sort_by_average(Student **head);
-
+run_student_management_system();
 
 #endif
