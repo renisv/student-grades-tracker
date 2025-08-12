@@ -13,13 +13,12 @@ int main()
     }
 
 
-
-	show_class_statistics(head);
-
 	bubble_sort_by_average(&head);
+	
+	
 
 
-    if (export_students_to_file("students_updated.txt", head) != 0) {
+    if (export_students_to_file("students.txt", head) != 0) {
         fprintf(stderr, "Failed to export students to file\n");
         return 1;
     }
