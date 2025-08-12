@@ -65,7 +65,7 @@ struct Student {
     Navigate to project     cd student-grades-tracker
     Compile                 gcc -o student_manager main.c students.c utils.c file_ops.c menu.c
     Run the program         ./student_manager
-};
+
 ```
 
 
