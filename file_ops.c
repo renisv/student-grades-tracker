@@ -11,9 +11,9 @@ int load_students_from_file(const char* filename, Student** head) {
     
     char line[256];
     int records = 0;
-    Student *tail = NULL;  // Track the end of the list
+    Student *tail = NULL;
     
-    while (fgets(line, sizeof(line), file)) {  // Fixed this line - added closing parenthesis
+    while (fgets(line, sizeof(line), file)) {
         line[strcspn(line, "\n")] = '\0';
         if (!line[0]) continue;
         
