@@ -11,16 +11,12 @@ int main()
         fprintf(stderr, "Failed to load students from file\n");
         return 1;
     }
-    
-	// find_student(head,"Robert Clark");
 
-	// show_student_average(head, "John Smith");
 
-	float avg = calculate_student_average(head, "John Smith");
-	printf("Average grade for the student is %.2f\n", avg);
 
-	float clsavg = calculate_class_average(head);
-	printf("Average grade for the class is %.2f\n", clsavg);
+	show_class_statistics(head);
+
+	bubble_sort_by_average(&head);
 
 
     if (export_students_to_file("students_updated.txt", head) != 0) {

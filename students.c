@@ -91,3 +91,139 @@ void print_all_students(Student *head)
     
     printf("===================\n");  // Added footer
 }
+
+/**
+ * find_student - Finds a student by name
+ * @head: Pointer to head of list
+ * @name: Name to search for
+ * Return: Pointer to student if found, NULL otherwise
+ */
+Student* find_student(Student *head, const char *name)
+{
+    if (name == NULL || head == NULL) {
+        return NULL;
+    }
+
+    Student *current = head;
+    while (current != NULL) {
+        if (strcmp(current->name, name) == 0) 
+		{
+            return current;
+        }
+        current = current->next;
+    }
+    return NULL;
+}
+
+
+/**
+ * search_by_id - Searches for a student by ID in the linked list
+ * @head: Pointer to the head pointer of the student list
+ * @id: Student ID to search for
+ * @return: Position index (0-based) if found, -1 if not found
+ */
+int search_by_id(Student **head, int id) 
+{
+    int pos = 0;
+    Student *current = *head;  // Better to use a local pointer
+    
+    while (current != NULL) {
+        if (current->id == id) {
+            return pos;
+        }
+        pos++;
+        current = current->next;
+    }
+    return -1;
+}
+
+
+/**
+ * delete_student_by_id - Deletes a student by their ID
+ * @head: Pointer to the head pointer of the student list
+ * @id: Student ID to delete
+ * @return: 0 on success, -1 if student not found
+ */
+int delete_student_by_id(Student **head, int id) {
+    if (head == NULL || *head == NULL) {
+        return -1;
+    }
+
+    
+    int position = search_by_id(head, id);
+    if (position == -1) {
+        return -1; 
+    }
+
+    Student *current = *head;
+    Student *prev = NULL;
+    int current_pos = 0;
+
+    
+    if (position == 0) {
+        *head = current->next;
+        free(current);
+        return 0;
+    }
+
+    
+    while (current != NULL && current_pos < position) {
+        prev = current;
+        current = current->next;
+        current_pos++;
+    }
+
+    
+    if (current != NULL) {
+        prev->next = current->next;
+        free(current);
+        return 0;
+    }
+
+    return -1; 
+}
+
+
+void bubble_sort_by_average(Student **head) {
+    if (!head || !*head || !(*head)->next) return;
+
+    int swapped;
+    Student *current;
+    Student *last_sorted = NULL;
+
+    do {
+        swapped = 0;
+        current = *head;
+
+        while (current->next != last_sorted) {
+            
+            float avg1 = calculate_student_average(current, current->name);
+            float avg2 = calculate_student_average(current->next, current->next->name);
+
+            if (avg1 > avg2) 
+			{
+                
+                Student *next = current->next;
+                current->next = next->next;
+                next->next = current;
+                
+                if (current == *head) {
+                    *head = next;
+                } else {
+                    
+                    Student *prev = *head;
+                    while (prev->next != current) {
+                        prev = prev->next;
+                    }
+                    prev->next = next;
+                }
+                
+                swapped = 1;
+                current = next; 
+            }
+            
+            current = current->next;
+        }
+        last_sorted = current; 
+    } while (swapped);
+}

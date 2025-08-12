@@ -18,10 +18,14 @@ int load_students_from_file(const char* filename, Student** head);
 int export_students_to_file(const char* filename, const Student* head);
 
 Student* find_student(Student *head, const char *name);
+int search_by_id(Student **head, int id);
+int delete_student_by_id(Student **head, int id);
+void bubble_sort_by_average(Student **head);
 
-float calculate_student_average(Student *head, const char *name);
 int get_student_count(Student *head);
+float calculate_student_average(Student *head, const char *name);
 float calculate_class_average(Student *head);
-
+int* gradeCount(Student **head);
+void show_class_statistics(Student *head);
 
 #endif
