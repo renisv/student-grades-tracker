@@ -1,25 +1,10 @@
 # **Student Grades Tracker**
 
 ## **1. Application Overview** 
-**📝 A simple menu-based application to manage student grades using linked lists**  
+**A simple menu-based application to manage student grades using linked lists**  
 The **Student Grades Tracker** is an application designed to help instructors manage student records, including names, ID numbers, and grades. The program allows users to add, view, search, sort, save and delete student data efficiently.  
 
-### **🎯 Project Overview**  
-This is a **C program** that helps teachers or administrators keep track of student grades. You can:  
-✅ Add new students with their grades  
-✅ View all student records  
-✅ Search for specific students  
-✅ Update grades when needed  
-✅ Sort students by name, ID, or average score  
-✅ Save all data to a file (grades won't be lost when program closes)  
 
-
-
-### **Purpose**  
-- Track and manage student grades in a structured way.  
-- Calculate average grades for performance analysis.  
-- Store and retrieve student records.  
----
 ---
 ## **2. Data Representation & Structure**  
 
@@ -40,73 +25,55 @@ struct Student {
 - Fixed **5 grades per student** (simple to manage)  
 ---
 ---
-## **3. How to Use the Program**  
 
-### **Main Menu Options**  
-```
-1. ADD STUDENT
-2. VIEW ALL STUDENTS
-3. SEARCH STUDENT
-4. UPDATE GRADES
-5. CALCULATE AVERAGE
-6. SORT STUDENTS
-7. SAVE TO FILE
-8. LOAD FROM FILE
-9. EXIT
-```
-
----
----
-
-## **4. Technical implementation**
+## **3. Technical implementation**
 
   
  ### Key Features
-- **Linked List Storage**: Students stored as nodes (flexible size, no wasted memory).
+- **Linked List Storage**: Uses a singly linked list for O(1) insertions and dynamic sizing. Each node stores student data and a next pointer, avoiding fixed-size limitations while maintaining memory efficiency.
 
-- **File Handling**: Auto-saves/loads data to students.txt (plain text format).
+- **File Handling**: Automatically loads/saves to `students.txt` in CSV format. Robust error handling covers missing files and corrupt data, with human-readable Name,ID,Grade1-5 formatting.
 
-- **Search & Update**: Finds students by ID/name and edits grades.
+- **Search**: Supports both ID (direct comparison) and name (`strcmp()` searches). Handles edge cases like empty lists and NULL pointers gracefully.
 
-- **Sorting**: Uses selection sort (by name, ID, or average grade).
+- **Sorting**: Optimized bubble sort organizes by average grade. Swaps node pointers instead of data, with early termination for efficiency on nearly-sorted lists.
 
-- **Averages**: Calculates and displays each student’s mean score.
+- **Averages**: Computes individual averages and class statistics. Categorizes students into performance tiers (low/medium/high) using floating-point precision.
 
-### How It Works
-- **Adding Students**: New entries go to the end of the linked list.
+## **4. How to Use the Program**  
+### **Main Menu Options**  
+```
+1. ADD STUDENT
+2.  DELETE STUDENT
+3. SEARCH STUDENT
+4. PRINT STUDENT
+5. SORT BY AVERAGE GRADE
+6. EXIT
+```
 
-- **Saving/Loading**: Reads/writes to a file to keep data after closing.
+---
+---
 
-- **Sorting**: Rearranges nodes by comparing names, IDs, or grades.
 
-- **Memory**: Uses malloc/free to manage dynamic data.
+
+## **5. Compilation**  
+
+
+```c
+
+    Clone the repository    git clone https://github.com/renisv/student-grades-tracker.git
+    Navigate to project     cd student-grades-tracker
+    Compile                 gcc -o student_manager main.c students.c utils.c file_ops.c menu.c
+    Run the program         ./student_manager
+};
+```
+
 
 ---
 ---
-## **5. Expected Outcome**  
-A functional, user-friendly program that simplifies grade tracking for educators while demonstrating core C programming concepts (structs, file I/O, sorting, and dynamic memory).
 
-#### For Teachers:
 
-✅ Add/view/edit grades easily.
 
-✅ Sort students by performance.
-
-✅ Data saved automatically.
-
-#### For Developers:
-
-✅ Demonstrates structs, pointers, file I/O, sorting.
-
-✅ Simple but functional (no GUI).
-
-✅  Easy to expand (e.g., add more subjects).
-
-## 
-
----
-
----
 
 ## **6. Developers**
  
