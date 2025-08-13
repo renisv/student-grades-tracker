@@ -5,7 +5,6 @@
 #include <ctype.h>
 #define FILENAME "students.txt"
 #define MAX_INPUT 100
-
 static void clear_input_buffer() {
     int c;
     while ((c = getchar()) != '\n' && c != EOF);
@@ -146,8 +145,7 @@ void run_student_management_system() {
     } else if (load_result == -1) {
         printf("Warning: Could not open file. Starting with empty list.\n");
     } else if (load_result == -2) {
-        printf("Warning: File exists but no valid records found. Starting with 
-empty list.\n");
+        printf("Warning: File exists but no valid records found. Starting with empty list.\n");
     }
   
     // Show initial statistics if we have data (only at startup)
@@ -155,8 +153,7 @@ empty list.\n");
         printf("\n=== INITIAL CLASS STATISTICS ===\n");
         show_class_statistics(head);
     } else {
-        printf("No student data available. You can add students using the 
-menu.\n");
+        printf("No student data available. You can add students using the menu.\n");
     }
   
     // Main menu loop
