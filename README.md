@@ -5,8 +5,9 @@
 The **Student Grades Tracker** is an application designed to help instructors manage student records, including names, ID numbers, and grades. The program allows users to add, view, search, sort, save and delete student data efficiently.  
 
 
-<img width="720" height="358" alt="diagram png" src="https://github.com/user-attachments/assets/b42e7519-8397-4a4d-b58a-c40531d2ab76" />
-
+<p align="center">
+  <img width="500" alt="diagram png" src="https://github.com/user-attachments/assets/b42e7519-8397-4a4d-b58a-c40531d2ab76" />
+</p>
 
 ---
 ## **2. Data Representation & Structure**  
