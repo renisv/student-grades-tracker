@@ -136,7 +136,7 @@ void run_student_management_system() {
     Student* head = NULL;
     int choice;
   
-    // Load initial data with better error reporting
+    
     printf("Loading student data from %s...\n", FILENAME);
     int load_result = load_students_from_file(FILENAME, &head);
   
@@ -148,7 +148,7 @@ void run_student_management_system() {
         printf("Warning: File exists but no valid records found. Starting with empty list.\n");
     }
   
-    // Show initial statistics if we have data (only at startup)
+   
     if (head) {
         printf("\n=== INITIAL CLASS STATISTICS ===\n");
         show_class_statistics(head);
@@ -156,7 +156,7 @@ void run_student_management_system() {
         printf("No student data available. You can add students using the menu.\n");
     }
   
-    // Main menu loop
+    
     while (1) {
         display_main_menu();
         if (scanf("%d", &choice) != 1) {
